@@ -1,0 +1,642 @@
+FEB 25 HACKER RANK
+
+1.Write a pogram to check if two matrices are identical
+
+Input Format
+
+Number of elements followed by 2D array as input elements
+
+Constraints
+
+Nill
+
+Output Format
+
+IDENTICAL/NOT IDENTICAL
+
+Sample Input 0
+
+3 3
+2 2 4
+5 3 4
+1 8 6
+3 3
+2 2 4
+5 3 4
+1 8 6
+Sample Output 0
+
+IDENTICAL
+Sample Input 1
+
+2 3
+5 6 7
+8 9 1
+2 3
+4 3 2
+4 7 6
+Sample Output 1
+
+NOT IDENTICAL
+
+SOLUTION :
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int row1=sc.nextInt();
+        int col1=sc.nextInt();
+        int arr1[][]=new int[row1][col1];
+        for(int i=0;i<row1;i++){
+            for(int j=0;j<col1;j++){
+                arr1[i][j]=sc.nextInt();
+            }
+        }
+        int row2=sc.nextInt();
+        int col2=sc.nextInt();
+        int arr2[][]=new int[row2][col2];
+        for(int i=0;i<row2;i++){
+            for(int j=0;j<col2;j++){
+                arr2[i][j]=sc.nextInt();
+            }
+        }
+        if(Arrays.deepEquals(arr1,arr2))
+            System.out.println ("IDENTICAL");
+        else
+            System.out.println ("NOT IDENTICAL");
+    }
+}
+
+---------------------------------------------------------------------------------------------------------------
+
+2. Write a program to accept the 2D array from the user and display the array in the form of a matrix
+
+Input Format
+
+Number of rows and columns followed by 2D array as input elements
+
+Constraints
+
+Nill
+
+Output Format
+
+Display the array elements
+
+Sample Input 0
+
+4 4
+1 2 3 4
+5 6 7 8
+1 2 3 4
+2 3 4 5
+Sample Output 0
+
+1 2 3 4 
+5 6 7 8 
+1 2 3 4 
+2 3 4 5 
+
+SOLUTION:
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int row=sc.nextInt();
+        int col=sc.nextInt();
+        int arr[][]=new int[row][col];
+        for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+                arr[i][j]=sc.nextInt();
+            }
+        }
+        for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+                System.out.print (arr[i][j]+" ");
+            }
+            System.out.println ();
+        }
+        
+    }
+}
+
+--------------------------------------------------------------------------------------------------
+
+3.Write a program to find the row with maximum zeros (if any)
+
+Input Format
+
+Matrix
+
+Constraints
+
+Nill
+
+Output Format
+
+Display the row with maximum zeros
+
+Sample Input 0
+
+3
+4 0 0
+5 1 0
+1 8 7
+Sample Output 0
+
+0
+Sample Input 1
+
+3
+1 2 3
+4 5 6
+7 8 9
+Sample Output 1
+
+No row has zeros
+
+SOLUTION:
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int row=sc.nextInt();
+        int col=row;
+        int arr[][]=new int[row][col];
+        for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+                arr[i][j]=sc.nextInt();
+            }
+        }
+        int count=0,max=0,ans=-1;
+        for(int i=0;i<row;i++){
+            count=0;
+            for(int j=0;j<col;j++){
+                if(arr[i][j]==0)
+                    count++;
+            }
+            if(count>max){
+                max=count;
+                ans=i;
+            } 
+        }
+        if(ans==-1){
+            System.out.println("No row has zeros");
+        }
+        else{
+            System.out.println (ans);
+        }
+    }
+}
+
+---------------------------------------------------------------------------------------------------------
+
+4.Write a program to print the sum of all elements in the matrix
+
+Input Format
+
+Number of elements followed by 2D array as input elements
+
+Constraints
+
+Nill
+
+Output Format
+
+Display the sum of 2D array
+
+Sample Input 0
+
+3 3
+1 2 3
+4 5 6
+7 8 9
+Sample Output 0
+
+Sum of All Elements of the Matrix is 45
+
+SOLUTION:
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int row=sc.nextInt();
+        int col=sc.nextInt();
+        int arr[][]=new int[row][col];
+        for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+                arr[i][j]=sc.nextInt();
+            }
+        }   
+        int sum=0;
+        for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+                sum+=arr[i][j];
+            }
+        }
+        System.out.println ("Sum of All Elements of the Matrix is "+sum);
+    }
+}
+
+--------------------------------------------------------------------------------------------------------------------------
+
+5.Write a program to search an element in the matrix. If the element is present display its row and column value,otherwise display as not present.
+
+Input Format
+
+n value
+
+search value
+
+matrix elements
+
+Constraints
+
+Nill
+
+Output Format
+
+ELEMENT FOUND/ELEMENT NOT FOUND
+
+Sample Input 0
+
+3
+1
+1 6 7
+4 8 3 
+0 8 1
+Sample Output 0
+
+Element found at row 0 and col 0
+Sample Input 1
+
+3
+10
+1 2 3
+4 5 6
+7 8 9
+Sample Output 1
+
+Element not found
+
+SOLUTION:
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int row=sc.nextInt();
+        int col=row;
+        int f=sc.nextInt();
+        int arr[][]=new int[row][col];
+        for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+                arr[i][j]=sc.nextInt();
+            }
+        }
+        for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+                if(f==arr[i][j]){
+                    System.out.println ("Element found at row "+i+" and col "+j);
+                    return;
+                }
+            }
+        }
+        System.out.println ("Element not found");
+    }
+}
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+6.Given a 2D matrix, write a program to find and print the sum of upper triangular matrix
+
+Input Format
+
+Accept size and elements of the matrix as an input
+
+Constraints
+
+Nill
+
+Output Format
+
+Display the sum of the upper triangular matrix
+
+Sample Input 0
+
+3
+6 8 9
+0 5 6
+0 0 4
+Sample Output 0
+
+38
+Sample Input 1
+
+4
+1 2 3 4
+7 1 2 3
+2 8 1 2
+4 3 6 1
+Sample Output 1
+
+20
+
+SOLUTION:
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int row=sc.nextInt();
+        int col=row;
+        int arr[][]=new int[row][col];
+        for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+                arr[i][j]=sc.nextInt();
+            }
+        }
+        int sum=0;
+        for(int i=0;i<row;i++){
+            for(int j=i;j<col;j++){
+                sum+=arr[i][j];
+            }
+        }
+        System.out.println (sum);
+
+    }
+}
+
+-------------------------------------------------------------------------------------------------------------
+
+7.Write a program to print the sum of each column of the matrix
+
+Input Format
+
+Accept row size and column size and elements of the matrix as an input
+
+Constraints
+
+Nill
+
+Output Format
+
+Display the sum of each columns
+
+Sample Input 0
+
+3 2
+1 2 
+4 5
+8 9
+Sample Output 0
+
+Sum of the Column 1 is 13
+Sum of the Column 2 is 16
+
+SOLUTION:
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int i,j,row,col,sum=0;
+        row=sc.nextInt();
+        col=sc.nextInt();
+        int arr[][]=new int[row][col];
+        for(i=0;i<row;i++){
+            for(j=0;j<col;j++){
+                arr[i][j]=sc.nextInt();
+            }
+        }
+        for(i=0;i<col;i++){
+            sum=0;
+            for(j=0;j<row;j++){
+                sum+=arr[j][i];
+            }
+            System.out.println("Sum of the Column "+(i+1)+" is "+sum);
+        }
+    }
+}
+
+-----------------------------------------------------------------------------------------------------------------------
+
+8.Write a program to print the sum of each row of the matrix
+
+Input Format
+
+Accept row size and column size and elements of the matrix as a input
+
+Constraints
+
+Nill
+
+Output Format
+
+Display the sum of each rows
+
+Sample Input 0
+
+4  4
+1 2 3 4
+5 6 7 8
+9 0 1 2
+8 4 5 3
+Sample Output 0
+
+Sum of the Row 1 is 10
+Sum of the Row 2 is 26
+Sum of the Row 3 is 12
+Sum of the Row 4 is 20
+
+SOLUTION:
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int i,j,row,col,sum=0;
+        row=sc.nextInt();
+        col=sc.nextInt();
+        int arr[][]=new int[row][col];
+        for(i=0;i<row;i++){
+            for(j=0;j<col;j++){
+                arr[i][j]=sc.nextInt();
+            }
+        }
+        for(i=0;i<row;i++){
+            sum=0;
+            for(j=0;j<col;j++){
+                sum+=arr[i][j];
+            }
+            System.out.println("Sum of the Row "+(i+1)+" is "+sum);
+        }
+    }
+}
+
+---------------------------------------------------------------------------------------------------------------
+
+9.Write a program to print the sum of major diagonal of the matrix
+
+Input Format
+
+Accept row size and column size and elements as an input
+
+Constraints
+
+Nill
+
+Output Format
+
+Display the sum of the main diagonal elements
+
+Sample Input 0
+
+4 4
+1 2 3 4
+5 4 7 8
+9 8 0 6
+4 3 2 1
+Sample Output 0
+
+Sum of the Main Diagonal Matrix is 6
+
+SOLUTION :
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int i,j,row,col,sum=0;
+        row=sc.nextInt();
+        col=sc.nextInt();
+        int arr[][]=new int[row][col];
+        for(i=0;i<row;i++){
+            for(j=0;j<col;j++){
+                arr[i][j]=sc.nextInt();
+            }
+        }
+        for(i=0;i<col;i++){
+            for(j=0;j<row;j++){
+                if(i==j)
+                sum+=arr[j][i];
+            }
+        }
+        System.out.println("Sum of the Main Diagonal Matrix is "+sum);
+    }
+}
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+10. Write a program to print the sum of minor diagonal of the matrix
+
+Input Format
+
+Accept size and elements of the matrix as an input
+
+Constraints
+
+Nill
+
+Output Format
+
+Display the sum of minor diagonal elements
+
+Sample Input 0
+
+3
+8 7 6
+2 5 4
+3 8 6
+Sample Output 0
+
+14
+
+SOLUTION:
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int i,j,n,sum=0;
+        n=sc.nextInt();
+        //col=sc.nextInt();
+        int arr[][]=new int[n][n];
+        for(i=0;i<n;i++){
+            for(j=0;j<n;j++){
+                arr[i][j]=sc.nextInt();
+            }
+        }
+        for(i=0;i<n;i++){
+            for(j=0;j<n;j++){
+                if(i+j==n-1)
+                sum+=arr[j][i];
+            }
+        }
+        System.out.println(sum);
+    }
+}
